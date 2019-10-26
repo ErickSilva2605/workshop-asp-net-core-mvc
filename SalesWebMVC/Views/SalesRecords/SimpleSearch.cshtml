@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<SalesWebMVC.Models.SalesRecord>
 @{
-    ViewData["Title"] = "Vendas";
+    ViewData["Title"] = "Busca Simples";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -22,6 +22,7 @@
         </form>
     </div>
 </nav>
+
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Total de Vndas = @Model.Sum(obj => obj.Amount).ToString("F2")</h3>
