@@ -41,7 +41,7 @@ namespace SalesWebMVC.Services
                 _context.Seller.Remove(obj);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 throw new IntegrityException("Não é possivel apagar este vendedor pois ele(a) possui vendas.");
             }
