@@ -41,6 +41,18 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken] // Para previnir ataque CSRF
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel
+                {
+                    Departments = departments,
+                    Seller = seller
+                };
+
+                return View(viewModel);
+            }
+
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -49,7 +61,7 @@ namespace SalesWebMVC.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error),new { message = "Id não fornecido!"});
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido!" });
             }
 
             var obj = _sellerService.FindById(id.Value);
@@ -115,6 +127,18 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel
+                {
+                    Departments = departments,
+                    Seller = seller
+                };
+
+                return View(viewModel);
+            }
+
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id não correspondente!" });
