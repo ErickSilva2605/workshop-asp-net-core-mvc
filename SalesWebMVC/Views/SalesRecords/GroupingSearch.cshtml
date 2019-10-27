@@ -5,11 +5,11 @@
     DateTime minDate = DateTime.Parse(ViewData["minDate"] as string);
     DateTime maxDate = DateTime.Parse(ViewData["maxDate"] as string);
 }
-
+<hr />
 <h2>@ViewData["Title"]</h2>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse" style="padding-left: 0px">
+    <div class="container-fluid" style="padding-left: 0px; padding-top: 20px; padding-bottom: 20px">
         <form class="navbar-form navbar-left form-inline" role="search">
             <div class="form-group">
                 <div class="form-group">
@@ -20,7 +20,7 @@
                     <label style="margin-right: 5px" for="maxDate">Data Final</label>
                     <input style="margin-right: 5px" type="date" class="form-control" name="maxDate" value=@ViewData["maxDate"] />
                 </div>
-                <button type="submit" class="btn btn-primary">Filtrar</button>
+                <button type="submit" class="btn btn-success">Filtrar</button>
             </div>
         </form>
     </div>
@@ -28,22 +28,23 @@
 
 @foreach (var departmentGroup in Model)
 {
-    <div class="panel panel-primary">
+    <div class="panel panel-primary" style="padding-top: 10px">
         <div class="panel-heading">
-            <h3 class="panel-title">Departamento @departmentGroup.Key.Name, Total de vendas = @departmentGroup.Key.TotalSales(minDate, maxDate).ToString("F2")</h3>
+            <h3 class="panel-title">Departamento @departmentGroup.Key.Name</h3>
+            <h4 class="panel-title">Total de venda: @departmentGroup.Key.TotalSales(minDate, maxDate).ToString("C2")</h4>
         </div>
         <div class="panel-body">
             <table class="table table-striped table-hover">
                 <thead>
-                    <tr class="success">
+                    <tr class="bg-success">
                         <th>
-                            Date
+                            Data
                         </th>
                         <th>
-                            Amount
+                            Vendedor
                         </th>
                         <th>
-                            Seller
+                            Valor
                         </th>
                         <th>
                             Status
@@ -58,10 +59,10 @@
                                 @Html.DisplayFor(modelItem => item.Date)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Amount)
+                                @Html.DisplayFor(modelItem => item.Seller.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Seller.Name)
+                                @Html.DisplayFor(modelItem => item.Amount)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)

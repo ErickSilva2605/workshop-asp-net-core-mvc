@@ -51,13 +51,13 @@ namespace SalesWebMVC
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             // Configuracoes para definir a localização da aplicação
-            //var ptBr = new CultureInfo("pt-BR");
-            var enUS = new CultureInfo("en-US");
+            var ptBr = new CultureInfo("pt-BR");
+            //var enUS = new CultureInfo("en-US");
             var localizationOptions = new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture(enUS),
-                SupportedCultures = new List<CultureInfo> { enUS },
-                SupportedUICultures =  new List<CultureInfo> { enUS }
+                DefaultRequestCulture = new RequestCulture(ptBr),
+                SupportedCultures = new List<CultureInfo> { ptBr },
+                SupportedUICultures =  new List<CultureInfo> { ptBr }
             };
 
             app.UseRequestLocalization(localizationOptions);

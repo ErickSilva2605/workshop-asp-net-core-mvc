@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace SalesWebMVC.Models
@@ -8,7 +9,12 @@ namespace SalesWebMVC.Models
     public class Department
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "{0} obrigatorio!")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Tamanho do {0} deve ser entre {2} e {1} caracteres!")]
+        [Display(Name = "Nome")]
         public string Name { get; set; }
+
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
         public Department()

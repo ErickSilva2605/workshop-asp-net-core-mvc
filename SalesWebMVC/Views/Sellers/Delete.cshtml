@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Deletar";
 }
-
+<hr />
 <h1>@ViewData["Title"]</h1>
-
+<hr />
 <h3>Tem certeza que deseja apagar este vendedor?</h3>
+<hr />
 
 <div>
-    <h4>Vendedor</h4>
-    <hr />
+    <h4>Vendedor:</h4>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -38,8 +38,8 @@
         </dd>
     </dl>
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id"/>
-        <input type="submit"value="Deletar" class="btn btn-danger" />
-        <a asp-action="Index">Cancelar</a>
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Deletar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-primary">Cancelar</a>
     </form>
 </div>
